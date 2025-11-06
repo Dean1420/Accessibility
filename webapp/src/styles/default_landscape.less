@@ -1,0 +1,146 @@
+/*
+--------------------------------------------------------------------------------
+HTML
+--------------------------------------------------------------------------------
+*/
+html {
+    font-size: 16px;
+}
+
+
+
+/*
+--------------------------------------------------------------------------------
+Variables
+--------------------------------------------------------------------------------
+*/
+
+
+
+
+/*
+--------------------------------------------------------------------------------
+Mixins
+--------------------------------------------------------------------------------
+*/
+.bordered {
+    border: black;
+    border-style: dashed;
+    border-width: 1rem * 0.0625;
+}
+
+.bordered_interactable {
+    border: black;
+    border-style: solid;
+    border-width: 1rem * 0.125;
+}
+
+.focused {
+    border: black;
+    border-style: solid;
+    border-width: 1rem * 0.25;
+}
+
+.hover {
+    .focused()
+}
+
+.white_bg {
+    background-color: white;
+}
+
+.min_size {
+    min-height: 3rem;
+    min-width: 3rem;
+}
+
+
+/*
+--------------------------------------------------------------------------------
+CSS
+--------------------------------------------------------------------------------
+*/
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 3rem;
+    .bordered();
+
+    nav {
+        padding: 1rem;
+        margin: 1rem;
+        .bordered();
+        .min_size();
+
+        label {
+            padding: 1rem;
+        }
+
+        select {
+            padding: 1rem 1rem 1rem 0rem;
+            text-align: center;
+            .bordered_interactable();
+            .min_size();
+            .white_bg();
+
+            &:focus {
+                .focused()
+            }
+
+            &:hover {
+                .hover();
+            }
+        }
+    }
+
+
+    button {
+        text-align: center;
+        margin: 1rem 1rem 1rem 1rem;
+        .bordered_interactable();
+        .min_size();
+        .white_bg();
+
+        &:focus {
+            .focused()
+        }
+
+        &:hover {
+            .hover();
+        }
+    }
+}
+
+.todo {
+    .bordered();
+
+    section {
+        margin: 3rem;
+        .bordered();
+        &:focus{.focused()};
+
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        p {
+            text-align: center;
+            &:focus{.focused()};
+        }
+    }
+
+    .delete{
+        margin: 3rem auto;
+        padding: 1.5rem 5rem;
+        display: block;
+        font-size: 1rem;
+
+        .bordered_interactable();
+        &:focus{.focused()};
+        &:hover{.hover()};
+        .min_size();
+        .white_bg();
+    }
+}

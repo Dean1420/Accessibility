@@ -1,0 +1,30 @@
+{
+  "name": "accessibility-project",
+  "version": "1.0.0",
+  "description": "Project for the module \"Accessibility\"",
+  "license": "ISC",
+  "author": "Dean Braband",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "clear && npm run clean && npm run debug && npm run init_database && npm run start",
+    "debug": "npm run html && npm run css && npm run js",
+    "build": "npm run debug && npm run minify",
+    "clean": "rm -r ./webapp/dist",
+    "start": "node ./webapp/src/server/express_server.mjs",
+    "html": "mkdir -p ./webapp/dist && cp ./webapp/src/html/current_todo.html ./webapp/dist/index.html",
+    "css": "mkdir -p ./webapp/dist && lessc ./webapp/src/styles/default_portrait.less ./webapp/dist/default_portrait.css && lessc ./webapp/src/styles/default_landscape.less ./webapp/dist/default_landscape.css",
+    "js": "mkdir -p ./webapp/dist && esbuild ./webapp/src/frontend/current_todo.js --log-level=warning --bundle --outfile=./webapp/dist/current_todo.js",
+    "minify:css": "lessc --clean-css ./webapp/dist/default_landscape.css ./webapp/dist/default_landscape.css",
+    "minify:js": "terser ./webapp/dist/current_todo.js --compress --mangle --comments=false -o ./webapp/dist/current_todo.js",
+        "init_database": "if [ -f \"./webapp/dist/todos.db\" ]; then rm ./webapp/dist/todos.db; fi && node ./webapp/src/server/database/init_database.mjs"
+  },
+  "dependencies": {
+    "esbuild": "^0.25.12",
+    "express": "^5.1.0",
+    "less": "^4.4.2",
+    "minify": "^14.1.0",
+    "sqlite3": "^5.1.7",
+    "terser": "^5.44.0"
+  }
+}
