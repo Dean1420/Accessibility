@@ -12,9 +12,9 @@
     "build": "npm run debug && npm run minify",
     "clean": "rm -r ./webapp/dist",
     "start": "node ./webapp/src/server/express_server.mjs",
-    "html": "mkdir -p ./webapp/dist && cp ./webapp/src/html/current_todo.html ./webapp/dist/index.html",
+    "html": "mkdir -p ./webapp/dist && cp ./webapp/src/html/current_todo.html ./webapp/dist/index.html && cp ./webapp/src/html/todo_list.html ./webapp/dist/todo_list.html && cp ./webapp/src/html/add_todo.html ./webapp/dist/add_todo.html",
     "css": "mkdir -p ./webapp/dist && lessc ./webapp/src/styles/default_portrait.less ./webapp/dist/default_portrait.css && lessc ./webapp/src/styles/default_landscape.less ./webapp/dist/default_landscape.css",
-    "js": "mkdir -p ./webapp/dist && esbuild ./webapp/src/frontend/current_todo.js --log-level=warning --bundle --outfile=./webapp/dist/current_todo.js",
+    "js": "mkdir -p ./webapp/dist && esbuild ./webapp/src/frontend/current_todo.js --log-level=warning --bundle --outfile=./webapp/dist/current_todo.js && esbuild ./webapp/src/frontend/todo_list.js --log-level=warning --bundle --outfile=./webapp/dist/todo_list.js && esbuild ./webapp/src/frontend/add_todo.js --log-level=warning --bundle --outfile=./webapp/dist/add_todo.js",
     "minify:css": "lessc --clean-css ./webapp/dist/default_landscape.css ./webapp/dist/default_landscape.css",
     "minify:js": "terser ./webapp/dist/current_todo.js --compress --mangle --comments=false -o ./webapp/dist/current_todo.js",
         "init_database": "if [ -f \"./webapp/dist/todos.db\" ]; then rm ./webapp/dist/todos.db; fi && node ./webapp/src/server/database/init_database.mjs"
