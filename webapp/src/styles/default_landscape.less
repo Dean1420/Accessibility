@@ -162,6 +162,48 @@ header {
         ;
         .min_size();
         .white_bg();
+    } 
+}
+
+.title{
+        text-align: center;
+        margin: @MARGIN;
+        font-size: 1rem;
+        .bordered();
+    }
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    button{
+        margin: 3rem auto;
+        padding: 1.5rem 5rem;
+        display: block;
+        font-size: 1rem;
+
+        .bordered_interactable();
+
+        &:focus {
+            .focused()
+        }
+
+        ;
+
+        &:hover {
+            .hover()
+        }
+
+        ;
+        .min_size();
+        .white_bg();
+    }
+
+    .delete_todo{
+    }
+    .open_details {
+    }
+
+    .set_current {
     }
 }
 

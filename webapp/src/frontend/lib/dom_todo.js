@@ -82,6 +82,7 @@ export async function create_dom_todo(renderContainer, todoData) {
   deleteButton.setAttribute("aria-label", `Delete todo: ${todoData.title}`);
   deleteButton.onclick = async () => {
     delete_todo(todoData.id);
+    document.getElementById(todoData.id).remove();
   };
   s_todo.appendChild(deleteButton);
 

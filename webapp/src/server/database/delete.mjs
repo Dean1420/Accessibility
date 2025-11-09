@@ -13,6 +13,8 @@ export async function query_delete_todo(id) {
   
   const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE);
   
+  console.log(id);
+
   const data = await new Promise((resolve, reject) => {
     db.run(`DELETE FROM todos WHERE id = ${id}`, [], function(err) {
       if (err) {

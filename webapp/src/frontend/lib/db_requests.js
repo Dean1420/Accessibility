@@ -33,9 +33,16 @@ export async function get_current_todo() {
     .catch(log_error);
 }
 
+export async function get_all_todos(){
+  return await fetch(`/all_todos`, GET)
+    .then(check_response)
+    .then(log_and_return_data)
+    .catch(log_error);
+}
+
 export async function delete_todo(_todoId) {
   const queryParam = new URLSearchParams({todoID: _todoId});
-  return await fetch(`/delete_todo?${_todoId}`, DELETE)
+  return await fetch(`/delete_todo/${_todoId}`, DELETE)
     .catch(log_error);
 }
 
