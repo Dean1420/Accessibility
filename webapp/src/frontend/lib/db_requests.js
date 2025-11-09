@@ -16,6 +16,13 @@ const DELETE = {
   }
 }
 
+const POST = {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}
+
 
 
 // Requests
@@ -27,11 +34,17 @@ export async function get_current_todo() {
 }
 
 export async function delete_todo(_todoId) {
-  console.log(_todoId);
-  //const queryParam = new URLSearchParams({todoID: _todoId});
-  return await fetch(`/delete_todo/${_todoId}`, DELETE)
+  const queryParam = new URLSearchParams({todoID: _todoId});
+  return await fetch(`/delete_todo?${_todoId}`, DELETE)
     .catch(log_error);
 }
+
+export async function save_todo(_title, _currentDate, _dueDate, _priority, _description){
+  const queryParam = new URLSearchParams({title: _title, currentDate: _currentDate, dueDate: _dueDate, priority: _priority, description: _description});
+  return await fetch(`/save_todo?${queryParam}`, POST);
+}
+
+
 
 // Requests response checks
 function check_response(response) {

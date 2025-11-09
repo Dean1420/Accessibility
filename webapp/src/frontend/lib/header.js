@@ -6,7 +6,6 @@ function create_nav(header) {
 
     // Label
     const label = document.createElement('label');
-    label.id = 'page-select';
     label.setAttribute('for', 'page-select');
     label.textContent = 'Choose a page:';
 
