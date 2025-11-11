@@ -145,11 +145,13 @@ header {
 
     .delete {
         margin: 3rem auto;
-        padding: 1.5rem 5rem;
+        padding: 1rem 5rem;
         display: block;
-        font-size: 1rem;
+        text-align: center;
 
         .bordered_interactable();
+        .min_size();
+        .white_bg();
 
         &:focus {
             .focused()
@@ -162,26 +164,26 @@ header {
         }
 
         ;
-        .min_size();
-        .white_bg();
-    } 
+    }
 }
 
-.title{
-        text-align: center;
-        margin: @MARGIN;
-        font-size: 1rem;
-        .bordered();
-    }
+.title {
+    text-align: center;
+    margin: @MARGIN;
+    font-size: 1rem;
+    .bordered();
+}
 
-.buttons{
+.buttons {
     display: flex;
     flex-direction: row;
-    button{
-        margin: 3rem auto;
-        padding: 1.5rem 5rem;
-        display: block;
+
+    button {
         font-size: 1rem;
+        padding: 1rem 5rem;
+        display: block;
+        margin: 3rem auto;
+        text-align: center;
 
         .bordered_interactable();
 
@@ -200,13 +202,11 @@ header {
         .white_bg();
     }
 
-    .delete_todo{
-    }
-    .open_details {
-    }
+    .delete_todo {}
 
-    .set_current {
-    }
+    .open_details {}
+
+    .set_current {}
 }
 
 form {
@@ -224,6 +224,7 @@ form {
             text-align: center;
             .min_size();
             font-size: 1rem;
+
             &:focus {
                 .focused()
             }
@@ -259,6 +260,7 @@ form {
             font-size: 1rem;
             overflow: auto;
             .min_size();
+
             &:focus {
                 .focused()
             }
@@ -270,6 +272,11 @@ form {
 
         button {
             font-size: 1rem;
+            padding: 1rem 5rem;
+            display: block;
+            margin: 3rem auto;
+            text-align: center;
+
             .bordered_interactable();
             .min_size();
             .white_bg();
@@ -285,14 +292,14 @@ form {
     }
 }
 
-dialog{
+dialog {
     height: 80%;
     width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    .close-modal{
+    .close-modal {
         display: block;
         text-align: center;
         margin: @MARGIN;
@@ -302,6 +309,7 @@ dialog{
         .min_size();
         .bordered_interactable();
         .white_bg();
+
         &:focus {
             .focused()
         }
@@ -314,6 +322,6 @@ dialog{
     }
 }
 
-button{
+button {
     font-size: 1rem;
 }
