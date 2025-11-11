@@ -67,3 +67,33 @@ export async function query_current_todo() {
     return data;
 }
 
+
+
+export async function query_todo_by_id(id) {
+    const dbPath = path.resolve('./webapp/dist/todos.db'); // absolute path
+    console.log('Opening DB at:', dbPath);
+
+    if (!fs.existsSync(dbPath)) {
+        console.error('DB file not found:', dbPath);
+        return { error: 'DB file missing' };
+    }
+
+
+    const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE);
+    const data = await new Promise((resolve, reject) => {
+        db.all(`SELECT * FROM todos WHERE id = ?`, [id], (err, rows) => {
+            if (err) {
+                console.error("Query error:", err.message);
+                reject(err);
+            } else {
+                console.table(rows);
+                resolve(rows);
+            }
+        });
+    }
+    );
+
+    db.close();
+    
+    return data;
+}

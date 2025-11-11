@@ -40,6 +40,13 @@ export async function get_current_todo() {
     .catch(log_error);
 }
 
+export async function get_todo_by_id(todoID) {
+  return await fetch(`/todo_by_id/${todoID}`, GET)
+    .then(check_response)
+    .then(log_and_return_data)
+    .catch(log_error);
+}
+
 export async function get_all_todos(){
   return await fetch(`/all_todos`, GET)
     .then(check_response)
@@ -59,7 +66,6 @@ export async function save_todo(_title, _currentDate, _dueDate, _priority, _desc
 }
 
 export async function set_as_current_todo(_todoId){
-  const queryParam = new URLSearchParams({todoID: _todoId});
   return await fetch(`/set_current_todo/${_todoId}`, PUT )
     .catch(log_error);
 }

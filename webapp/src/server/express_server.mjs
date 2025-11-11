@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import { query_all_todo_titles, query_current_todo } from './database/get.mjs';
+import { query_all_todo_titles, query_current_todo, query_todo_by_id } from './database/get.mjs';
 import { query_delete_todo } from './database/delete.mjs';
 import { query_save_todo } from './database/post.mjs';
 import { set_as_current_todo } from './database/put.mjs';
@@ -46,6 +46,18 @@ server.get('/current_todo', async (req, res) => {
 server.get('/all_todos', async (req, res) => {
   try {
     const data = await query_all_todo_titles();
+    console.log(data);
+    res.json(data); // send js object directly
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server or DB-Error' });
+  }
+});
+
+server.get('/todo_by_id/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const data = await query_todo_by_id(id);
     console.log(data);
     res.json(data); // send js object directly
   } catch (err) {
