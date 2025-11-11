@@ -15,14 +15,13 @@ function create_modal(todoData) {
     const closeButton = document.createElement("button");
     closeButton.type = "button";
     closeButton.className = "close-modal";
-    closeButton.textContent = "×";
-    closeButton.setAttribute("aria-label", "Close details");
+    closeButton.textContent = "[X] Close";
+    closeButton.setAttribute("aria-label", "Close details pop-up");
     closeButton.onclick = () => dialog.close();
     
     dialog.appendChild(closeButton);
     
     // Use your existing function to create the todo content
-    //console.log(todoData);
     create_dom_todo_without_buttons(dialog, todoData);
     
     // Close on click outside
@@ -78,7 +77,7 @@ function create_button_section(id) {
     openTodo.setAttribute("aria-label", `Open the detail view of the currently selected To-Do`);
     openTodo.onclick = async () => {
         const todoData = await get_todo_by_id(id);
-        const modal =create_modal(todoData);
+        const modal =create_modal(todoData[0]);
         modal.showModal();
     };
 

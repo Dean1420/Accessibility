@@ -286,4 +286,28 @@ form {
 dialog{
     height: 80%;
     width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .close-modal{
+        display: block;
+        text-align: center;
+        margin: @MARGIN;
+        width: 10rem;
+        height: 3rem;
+
+        .min_size();
+        .bordered_interactable();
+        .white_bg();
+        &:focus {
+            .focused()
+        }
+
+        ;
+
+        &:hover {
+            .hover()
+        }
+    }
 }

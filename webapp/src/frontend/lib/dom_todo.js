@@ -93,7 +93,7 @@ export async function create_dom_todo(renderContainer, todoData) {
 
 
 export async function create_dom_todo_without_buttons(renderContainer, todoData) {
-
+  console.log(todoData);
   // Create section container
   const s_todo = document.createElement('section');
   s_todo.className = "todo";
