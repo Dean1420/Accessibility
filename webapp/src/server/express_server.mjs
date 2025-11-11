@@ -3,6 +3,7 @@ import path from 'path';
 import { query_all_todo_titles, query_current_todo } from './database/get.mjs';
 import { query_delete_todo } from './database/delete.mjs';
 import { query_save_todo } from './database/post.mjs';
+import { set_as_current_todo } from './database/put.mjs';
 
 
 
@@ -74,6 +75,16 @@ server.post('/save_todo', async (request, response) => {
   }
 });
 
+server.put('/set_current_todo/:id', async (request, response) => {
+  const todoId = request.params.id;
+  try {
+    await set_as_current_todo(todoId);
+    response.end();
+  } catch (err) {
+    console.error(err);
+    response.status(500).json({ error: 'Server or DB-Error' });
+  }
+});
 
 
 

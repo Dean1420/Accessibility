@@ -1,7 +1,7 @@
 
 
 
-import { delete_todo, get_all_todos } from "./lib/db_requests";
+import { delete_todo, get_all_todos, set_as_current_todo } from "./lib/db_requests";
 import { render_header } from "./lib/header";
 
 
@@ -30,7 +30,7 @@ function create_button_section(id){
         setCurrentTodo.textContent = "Set as Current To-Do";
         setCurrentTodo.setAttribute("aria-label", `Set this To-Do as the current To-Do`);
         setCurrentTodo.onclick = async () => {
-            //set_as_current_todo(id);
+            set_as_current_todo(id);
         };
 
         // Open To-Do details

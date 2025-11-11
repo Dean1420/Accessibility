@@ -23,6 +23,13 @@ const POST = {
   }
 }
 
+const PUT = {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}
+
 
 
 // Requests
@@ -49,6 +56,12 @@ export async function delete_todo(_todoId) {
 export async function save_todo(_title, _currentDate, _dueDate, _priority, _description){
   const queryParam = new URLSearchParams({title: _title, currentDate: _currentDate, dueDate: _dueDate, priority: _priority, description: _description});
   return await fetch(`/save_todo?${queryParam}`, POST);
+}
+
+export async function set_as_current_todo(_todoId){
+  const queryParam = new URLSearchParams({todoID: _todoId});
+  return await fetch(`/set_current_todo/${_todoId}`, PUT )
+    .catch(log_error);
 }
 
 
