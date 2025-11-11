@@ -61,6 +61,14 @@ CSS
 --------------------------------------------------------------------------------
 */
 
+body, dialog{
+   background-color: #ffc845;
+
+   section, header, main{
+    background-color: white;
+   }
+}
+
 header {
     display: flex;
     justify-content: space-evenly;
@@ -115,6 +123,7 @@ header {
 }
 
 .todo {
+    margin-bottom: 3rem;
     .bordered();
 
     section {
@@ -182,7 +191,7 @@ header {
         font-size: 1rem;
         padding: 1rem 5rem;
         display: block;
-        margin: 3rem auto;
+        margin: 1.5rem auto;
         text-align: center;
 
         .bordered_interactable();
