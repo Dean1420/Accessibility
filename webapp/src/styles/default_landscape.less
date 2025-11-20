@@ -5,10 +5,15 @@ HTML
 */
 @import url('https://fonts.cdnfonts.com/css/open-dyslexic');
 
-html, body, input, textarea, button, select  {
+html,
+body,
+input,
+textarea,
+button,
+select {
     font-size: 16px;
 
-    font-family:  "Open-Dyslexic", Verdana, Tahoma, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-family: "Open-Dyslexic", Verdana, Tahoma, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 
@@ -20,7 +25,9 @@ Variables
 */
 
 @MARGIN: 3rem;
-
+@BG_COLOUR_1: #ffc845;
+@BG_COLOUR_2: #d6d2c4; 
+@BG_COLOUR_3: #d0d3d4;
 
 /*
 --------------------------------------------------------------------------------
@@ -37,6 +44,12 @@ Mixins
     border: black;
     border-style: solid;
     border-width: 1rem * 0.125;
+}
+
+.bordered_nav_links {
+    border: black;
+    border-style: dashed;
+    border-width: 1rem * 0.0625;
 }
 
 .focused {
@@ -67,7 +80,7 @@ CSS
 
 body,
 dialog {
-    background-color: #ffc845;
+    background-color: white;
 
     section,
     header,
@@ -80,23 +93,42 @@ header {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 3rem;
-    .bordered();
+    background: #d0d3d4;
+    //.bordered();
 
     nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         padding: 1rem;
         margin: 1rem;
+        background-color: @BG_COLOUR_2;
         .bordered();
         .min_size();
 
         label {
             padding: 1rem;
+            text-align: center;
         }
 
-        select {
-            padding: 1rem 1rem 1rem 0rem;
+        #current-page{
+            border-style: solid;
+            background: @BG_COLOUR_1;
+        }
+
+        a {
+            margin: 3rem 1rem;
+            padding: 0.5rem;
+            display: block;
             text-align: center;
-            font-size: 1rem;
-            .bordered_interactable();
+            text-decoration: none;
+            color: black;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .bordered_nav_links();
             .min_size();
             .white_bg();
 
@@ -104,9 +136,13 @@ header {
                 .focused()
             }
 
+            ;
+
             &:hover {
-                .hover();
+                .hover()
             }
+
+            ;
         }
 
     }
@@ -131,10 +167,12 @@ header {
 
 .todo {
     margin-bottom: 3rem;
+    background: #d0d3d4;
     .bordered();
 
     section {
         margin: 3rem;
+        background-color: @BG_COLOUR_2;
         .bordered();
 
         &:focus {
@@ -187,6 +225,7 @@ header {
     text-align: center;
     margin: @MARGIN;
     font-size: 1rem;
+    background-color: @BG_COLOUR_2;
     .bordered();
 }
 
@@ -226,6 +265,7 @@ header {
 }
 
 form {
+    background: @BG_COLOUR_3;
     .bordered();
 
     section {
@@ -235,6 +275,7 @@ form {
         display: flex;
         flex-direction: column;
         text-align: center;
+        background-color: @BG_COLOUR_2;
 
         input {
             text-align: center;
@@ -253,6 +294,7 @@ form {
         select {
             text-align: center;
             font-size: 1rem;
+            background-color: @BG_COLOUR_2;
             .min_size();
             .white_bg();
 
