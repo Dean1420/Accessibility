@@ -9,7 +9,7 @@ import { render_header } from "./lib/header";
 function add_title_input(form) {
     const s_title = document.createElement("section");
     s_title.className = "title";
-    s_title.setAttribute('aria-label', "Your To-Do, or a title for your To-Do document");
+    s_title.setAttribute('aria-label', "Your To-Do, or a title for your To-Do");
     s_title.tabIndex = 0;
 
     const label = document.createElement('label');
